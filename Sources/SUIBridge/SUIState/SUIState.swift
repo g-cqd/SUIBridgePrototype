@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-public final class SUIState<Root>: SUIStateObject where Root : IdentifiableUIView {
+public class SUIState<Root>: SUIStateObject where Root : IdentifiableUIView {
 
     public typealias ID = Root.ID
     public typealias BridgedRoot = SUIBridgeRoot<Root>
