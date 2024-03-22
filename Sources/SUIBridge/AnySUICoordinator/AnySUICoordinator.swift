@@ -10,7 +10,7 @@ import Foundation
 final class AnySUICoordinator: NSObject, SUICoordinatorObject {
 
     public typealias Root = IdentifiableUIView
-    public typealias BridgedRoot = SUIBridgedViewRoot<Root>
+    public typealias BridgedRoot = SUIBridgeRoot<Root>
 
     internal var root: BridgedRoot = .init(.constant(.init()))
     private override init() { super.init() }

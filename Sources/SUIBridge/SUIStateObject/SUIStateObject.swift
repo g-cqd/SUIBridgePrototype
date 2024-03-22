@@ -9,7 +9,7 @@ import Foundation
 
 protocol SUIStateObject: Identifiable where Root : IdentifiableUIView {
     associatedtype Root
-    typealias BridgedRoot = SUIBridgedViewRoot<Root>
+    typealias BridgedRoot = SUIBridgeRoot<Root>
 
     var insert: Bool { get }
     var root: BridgedRoot? { get }

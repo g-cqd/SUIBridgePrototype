@@ -1,15 +1,15 @@
 //
-//  SUIWebView.swift
-//  SUIWebView
+//  SUIBridge.swift
+//  SUIBridge
 //
 //  Created by Guillaume Coquard on 20/03/24.
 //
 
 import SwiftUI
 
-public struct SUIBridgedView<Root>: View where Root : IdentifiableUIView {
+public struct SUIBridge<Root>: View where Root : IdentifiableUIView {
 
-    public typealias BridgedRoot = SUIBridgedViewRoot<Root>
+    public typealias BridgedRoot = SUIBridgeRoot<Root>
     public typealias StateType = SUIState<Root>
 
     @State public var state: StateType
@@ -23,7 +23,7 @@ public struct SUIBridgedView<Root>: View where Root : IdentifiableUIView {
     }
 }
 
-extension SUIBridgedView {
+extension SUIBridge {
     public func set<A:Hashable>(
         _ path: ReferenceWritableKeyPath<Root,A>,
         to value: A

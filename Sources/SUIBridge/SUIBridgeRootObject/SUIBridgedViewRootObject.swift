@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-protocol SUIBridgedViewRootObject: UIViewRepresentable, Identifiable
+protocol SUIBridgeRootObject: UIViewRepresentable, Identifiable
     where Root : IdentifiableUIView,
           UIViewType == Root,
           Coordinator == SUICoordinator<UIViewType>,

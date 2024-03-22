@@ -1,6 +1,6 @@
 //
 //  SUICoordinatorObject.swift
-//  SUIBridgedView
+//  SUIBridge
 //
 //
 //  Created by Guillaume Coquard on 22/03/24.
@@ -12,7 +12,7 @@ import OSLog
 protocol SUICoordinatorObject: NSObject, Identifiable where Root : IdentifiableUIView, ID == Root.ID {
 
     associatedtype Root
-    typealias BridgedRoot = SUIBridgedViewRoot
+    typealias BridgedRoot = SUIBridgeRoot
 
     var root: BridgedRoot<Root> { get }
 

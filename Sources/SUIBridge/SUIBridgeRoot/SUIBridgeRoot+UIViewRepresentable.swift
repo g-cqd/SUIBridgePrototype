@@ -8,7 +8,7 @@
 import SwiftUI
 
 // MARK: - UIViewRepresentable
-extension SUIBridgedViewRoot: UIViewRepresentable {
+extension SUIBridgeRoot: UIViewRepresentable {
     
     public typealias Configuration = (UIViewType?) -> Void
 

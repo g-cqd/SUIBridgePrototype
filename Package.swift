@@ -2,18 +2,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "SUIBridgedView",
+    name: "SUIBridge",
     platforms: [.iOS(.v17),.macOS(.v14)],
     products: [
         .library(
-            name: "SUIBridgedView",
-            targets: ["SUIBridgedView"]),
+            name: "SUIBridge",
+            targets: ["SUIBridge"]),
     ],
     targets: [
         .target(
-            name: "SUIBridgedView"),
+            name: "SUIBridge"),
         .testTarget(
             name: "SUIBridgedViewTests",
-            dependencies: ["SUIBridgedView"]),
+            dependencies: ["SUIBridge"]),
     ]
 )

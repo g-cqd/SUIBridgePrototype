@@ -11,7 +11,7 @@ import Foundation
 public final class SUIState<Root>: SUIStateObject where Root : IdentifiableUIView {
 
     public typealias ID = Root.ID
-    public typealias BridgedRoot = SUIBridgedViewRoot<Root>
+    public typealias BridgedRoot = SUIBridgeRoot<Root>
 
     @ObservationIgnored
     internal var values: [Int:Int] = [:]

@@ -11,7 +11,7 @@ final class AnySUIState: NSObject, Identifiable, SUICoordinatorObject {
 
     public typealias ID = IdentifiableUIView.ID
     public typealias Root = IdentifiableUIView
-    public typealias BridgedRoot = SUIBridgedViewRoot<Root>
+    public typealias BridgedRoot = SUIBridgeRoot<Root>
 
     static fileprivate private(set) var states: [ID: any SUIStateObject] = [:]
 
