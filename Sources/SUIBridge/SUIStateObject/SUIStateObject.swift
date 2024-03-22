@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SUIStateObject: Identifiable where Root : IdentifiableUIView {
+public protocol SUIStateObject: Identifiable where Root : IdentifiableUIView {
     associatedtype Root
     typealias BridgedRoot = SUIBridgeRoot<Root>
 

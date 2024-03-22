@@ -8,15 +8,15 @@
 import Foundation
 
 @Observable
-public class SUIState<Root>: SUIStateObject where Root : IdentifiableUIView {
+open class SUIState<Root>: SUIStateObject where Root : IdentifiableUIView {
 
     public typealias ID = Root.ID
     public typealias BridgedRoot = SUIBridgeRoot<Root>
 
     @ObservationIgnored
-    internal var values: [Int:Int] = [:]
-    internal var configurations: [Int:BridgedRoot.Configuration] = [:]
-    internal var insert: Bool = false
+    public var values: [Int:Int] = [:]
+    public var configurations: [Int:BridgedRoot.Configuration] = [:]
+    public var insert: Bool = false
 
     public private(set) var root: BridgedRoot? = nil {
         didSet {
@@ -34,7 +34,7 @@ public class SUIState<Root>: SUIStateObject where Root : IdentifiableUIView {
         self.insert = insert
     }
 
-    internal func set(root: BridgedRoot) {
+    public func set(root: BridgedRoot) {
         self.root = root
     }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class AnySUIState: NSObject, Identifiable, SUICoordinatorObject {
+public final class AnySUIState: NSObject, Identifiable, SUICoordinatorObject {
 
     public typealias ID = IdentifiableUIView.ID
     public typealias Root = IdentifiableUIView
@@ -16,7 +16,7 @@ final class AnySUIState: NSObject, Identifiable, SUICoordinatorObject {
     static fileprivate private(set) var states: [ID: any SUIStateObject] = [:]
 
     internal var id: UUID = .init(uuid: (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))
-    internal var root: BridgedRoot = .init(.constant(.init()))
+    public var root: BridgedRoot = .init(.constant(.init()))
 
     @discardableResult
     static public func insert(_ state: any SUIStateObject) -> Bool {

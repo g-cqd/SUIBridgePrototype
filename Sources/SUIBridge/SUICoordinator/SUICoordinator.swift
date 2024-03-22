@@ -9,15 +9,15 @@ import WebKit
 import SwiftUI
 
 @Observable
-public class SUICoordinator<Root>: NSObject, Identifiable, SUICoordinatorObject where Root : IdentifiableUIView {
+open class SUICoordinator<Root>: NSObject, Identifiable, SUICoordinatorObject where Root : IdentifiableUIView {
 
     public typealias BridgedRoot = SUIBridgeRoot<Root>
 
     public private(set) var id: BridgedRoot.ID
 
-    internal var root: BridgedRoot
+    public var root: BridgedRoot
 
-    required init(_ root: BridgedRoot) {
+    required public init(_ root: BridgedRoot) {
         self.id = root.id
         self.root = root
         super.init()

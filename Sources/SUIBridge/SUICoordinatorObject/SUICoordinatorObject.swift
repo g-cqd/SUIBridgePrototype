@@ -9,7 +9,7 @@
 import UIKit
 import OSLog
 
-protocol SUICoordinatorObject: NSObject, Identifiable where Root : IdentifiableUIView, ID == Root.ID {
+public protocol SUICoordinatorObject: NSObject, Identifiable where Root : IdentifiableUIView, ID == Root.ID {
 
     associatedtype Root
     typealias BridgedRoot = SUIBridgeRoot

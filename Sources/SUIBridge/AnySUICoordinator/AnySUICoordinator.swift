@@ -7,12 +7,12 @@
 
 import Foundation
 
-final class AnySUICoordinator: NSObject, SUICoordinatorObject {
+public final class AnySUICoordinator: NSObject, SUICoordinatorObject {
 
     public typealias Root = IdentifiableUIView
     public typealias BridgedRoot = SUIBridgeRoot<Root>
 
-    internal var root: BridgedRoot = .init(.constant(.init()))
+    public var root: BridgedRoot = .init(.constant(.init()))
     private override init() { super.init() }
 
     static fileprivate private(set) var coordinators: [ID:any SUICoordinatorObject] = [:]

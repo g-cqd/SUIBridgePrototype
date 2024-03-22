@@ -14,9 +14,9 @@ public struct SUIBridgeRoot<Root>: SUIBridgeRootObject where Root : Identifiable
     public typealias Coordinator = SUICoordinator<UIViewType>
     public typealias ID = Root.ID
 
-    internal var uiView: Root
-    internal var state: Binding<StateType>
-    internal var unwrapped: StateType { self.state.wrappedValue }
+    public var uiView: Root
+    public var state: Binding<StateType>
+    public var unwrapped: StateType { self.state.wrappedValue }
 
     public let id: ID
 
