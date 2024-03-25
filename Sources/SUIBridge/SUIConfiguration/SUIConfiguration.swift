@@ -17,17 +17,13 @@ open class SUIConfiguration<Root> where Root : UIView {
     var configurations: [Key:Value] = [:]
     var moments: [Key:SUICycleMoment] = [:]
 
-    func updateValue(_ value: Value, forKey key: Key) -> Void {
-        withoutActuallyEscaping(value) { value in
+    func updateValue(_ value: @escaping Value, forKey key: Key) -> Void {
             self.configurations.updateValue(value, forKey: key)
-        }
     }
 
-    func set(_ value: Value, forKey key: Key, at moment: Moment) -> Void {
-        withoutActuallyEscaping(value) { value in
+    func set(_ value: @escaping Value, forKey key: Key, at moment: Moment) -> Void {
             self.updateValue(value, forKey: key)
             self.moments.updateValue(moment, forKey: key)
-        }
     }
 
     func get(for moment: Moment) -> any Sequence<Value> {
