@@ -5,22 +5,23 @@
 //  Created by Guillaume Coquard on 22/03/24.
 //
 
-import Foundation
+import UIKit
 
-public final class AnySUIState: NSObject, Identifiable, SUICoordinatorObject {
+public final class AnySUIState: NSObject, Identifiable, SUIStateObject {
 
-    public typealias ID = IdentifiableUIView.ID
-    public typealias Root = IdentifiableUIView
+    public typealias Root = UIView
     public typealias BridgedRoot = SUIBridgeRoot<Root>
 
     static fileprivate private(set) var states: [ID: any SUIStateObject] = [:]
 
-    internal var id: UUID = .init(uuid: (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))
-    public var root: BridgedRoot = .init(.constant(.init()))
+    public var insert: Bool = false
+    public var root: BridgedRoot? = nil
+    public var configurations: RootConfiguration? = nil
+    public var checker: [AnyHashable : Any?]? = nil
 
     @discardableResult
     static public func insert(_ state: any SUIStateObject) -> Bool {
-        Self.states.updateValue(state, forKey: state.id as! AnySUIState.ID) != nil
+        Self.states.updateValue(state, forKey: state.id) != nil
     }
 
     @discardableResult
@@ -30,5 +31,9 @@ public final class AnySUIState: NSObject, Identifiable, SUICoordinatorObject {
 
     static public func get(for id: ID) -> (any SUIStateObject)? {
         Self.states[id]
+    }
+
+    public func set(root: BridgedRoot) {
+        self.root = root
     }
 }

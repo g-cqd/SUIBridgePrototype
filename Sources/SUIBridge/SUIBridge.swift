@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-public struct SUIBridge<Root>: View where Root : IdentifiableUIView {
+public struct SUIBridge<Root>: View where Root : UIView {
 
     public typealias BridgedRoot = SUIBridgeRoot<Root>
+    public typealias RootConfiguration = SUIConfiguration<Root>
     public typealias StateType = SUIState<Root>
 
     @State public var state: StateType
@@ -24,36 +25,41 @@ public struct SUIBridge<Root>: View where Root : IdentifiableUIView {
 }
 
 extension SUIBridge {
+
+    
     public func set<A:Hashable>(
         _ path: ReferenceWritableKeyPath<Root,A>,
-        to value: A
+        to value: A,
+        during moment: SUICycleMoment = .all
     ) -> Self {
         let pathHash = path.hashValue
-        let valueHash = value.hashValue
-        let maybe = self.state.values[pathHash]
-        if maybe == nil || maybe! != valueHash {
-            self.state.values.updateValue(valueHash, forKey: pathHash)
-            self.state.configurations
-                .updateValue({
-                    (view: Root?) in
-                    view?[keyPath: path] = value
-                }, forKey: pathHash)
+        let maybe = self.state.checker![pathHash]
+        if (maybe == nil || maybe! as! A != value) && value != nil {
+            self.state.checker!.updateValue(value, forKey: pathHash)
+            self.state.configurations!.set(
+                { (view: Root?) in view?[keyPath: path] = value },
+                forKey: pathHash,
+                at: moment
+            )
         }
         return self
     }
     
     public func set<A:Hashable, B:Hashable>(
         _ path: ReferenceWritableKeyPath<Root,B>,
+        during moment: SUICycleMoment = .all,
         computing action: @escaping (A?) -> B?
     ) -> Self {
         let pathHash = path.hashValue
         let value: B? = action(state.root?.uiView[keyPath: path] as? A)
-        let valueHash = value.hashValue
-        let maybe = self.state.values[pathHash]
-        if (maybe == nil || maybe! != valueHash) && value != nil {
-            self.state.values.updateValue(valueHash, forKey: pathHash)
-            self.state.configurations
-                .updateValue({ (view: Root?) in view?[keyPath: path] = value! }, forKey: pathHash)
+        let maybe = self.state.checker![pathHash]
+        if (maybe == nil || maybe! as? B != value) && value != nil {
+            self.state.checker!.updateValue(value, forKey: pathHash)
+            self.state.configurations!.set(
+                ({ (view: Root?) in view?[keyPath: path] = value! }) as! BridgedRoot.Configuration,
+                forKey: pathHash,
+                at: moment
+            )
         }
         return self
     }

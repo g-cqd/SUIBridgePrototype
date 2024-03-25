@@ -12,7 +12,7 @@ extension SUIBridgeRoot: UIViewRepresentable {
     
     public typealias Configuration = (UIViewType?) -> Void
 
-    private func composeConfiguration(_ functions: [Configuration]) -> Configuration {
+    internal func composeConfiguration(_ functions: any Sequence<Configuration>) -> Configuration {
         ({ (value: UIViewType?) in
             for function in functions {
                 function( value )
@@ -20,17 +20,17 @@ extension SUIBridgeRoot: UIViewRepresentable {
         })
     }
 
-    private func configure(_ uiView: UIViewType?) {
-        composeConfiguration(Array(unwrapped.configurations.values))(uiView)
+    internal func configure(_ uiView: UIViewType?, at moment: SUICycleMoment = .all) {
+        composeConfiguration(unwrapped.configurations!.get(for: moment))(uiView)
     }
 
     public func makeUIView(context: Context) -> UIViewType {
-        configure(self.uiView)
+        configure(self.uiView, at: .making)
         return self.uiView
     }
 
     public func updateUIView(_ uiView: UIViewType, context: Context) {
-        configure(uiView)
+        configure(self.uiView, at: .updating)
     }
 
     public func makeCoordinator() -> Coordinator {

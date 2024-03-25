@@ -5,20 +5,21 @@
 //  Created by Guillaume Coquard on 19/03/24.
 //
 
-import Foundation
+import UIKit
 
 @Observable
-open class SUIState<Root>: SUIStateObject where Root : IdentifiableUIView {
+open class SUIState<Root>: SUIStateObject where Root : UIView {
 
     public typealias ID = Root.ID
     public typealias BridgedRoot = SUIBridgeRoot<Root>
+    public typealias RootConfiguration = SUIConfiguration<Root>
 
     @ObservationIgnored
-    public var values: [Int:Int] = [:]
-    public var configurations: [Int:BridgedRoot.Configuration] = [:]
+    public var checker: [AnyHashable : Any?]? = [:]
+    public var configurations: RootConfiguration? = .init()
     public var insert: Bool = false
 
-    public private(set) var root: BridgedRoot? = nil {
+    private(set) public var root: BridgedRoot? = nil {
         didSet {
             if let root = self.root {
                 self.id = root.id
@@ -28,7 +29,7 @@ open class SUIState<Root>: SUIStateObject where Root : IdentifiableUIView {
             }
         }
     }
-    public var id: ID!
+    private(set) var id: ID!
 
     public init(insert: Bool = false) {
         self.insert = insert

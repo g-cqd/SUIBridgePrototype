@@ -9,11 +9,12 @@ import WebKit
 import SwiftUI
 
 @Observable
-open class SUICoordinator<Root>: NSObject, Identifiable, SUICoordinatorObject where Root : IdentifiableUIView {
+open class SUICoordinator<Root>: NSObject, Identifiable, SUICoordinatorObject where Root : UIView {
 
     public typealias BridgedRoot = SUIBridgeRoot<Root>
+    public typealias ID = BridgedRoot.ID
 
-    public private(set) var id: BridgedRoot.ID
+    public private(set) var id: ID!
 
     public var root: BridgedRoot
 

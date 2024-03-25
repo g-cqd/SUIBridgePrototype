@@ -5,15 +5,20 @@
 //  Created by Guillaume Coquard on 22/03/24.
 //
 
-import Foundation
+import UIKit
 
 public final class AnySUICoordinator: NSObject, SUICoordinatorObject {
 
-    public typealias Root = IdentifiableUIView
+    public typealias Root = UIView
     public typealias BridgedRoot = SUIBridgeRoot<Root>
 
+    public private(set) var id: ID!
+
     public var root: BridgedRoot = .init(.constant(.init()))
-    private override init() { super.init() }
+    private override init() {
+        super.init()
+        self.id = .init(self)
+    }
 
     static fileprivate private(set) var coordinators: [ID:any SUICoordinatorObject] = [:]
 

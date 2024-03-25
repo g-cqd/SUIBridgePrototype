@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct SUIBridgeRoot<Root>: SUIBridgeRootObject where Root : IdentifiableUIView {
+public struct SUIBridgeRoot<Root>: SUIBridgeRootObject where Root : UIView {
 
     public typealias UIViewType = Root
     public typealias StateType = SUIState<UIViewType>
@@ -27,6 +27,7 @@ public struct SUIBridgeRoot<Root>: SUIBridgeRootObject where Root : Identifiable
         self.id = id
         self.state = state
         self.state.wrappedValue.set(root: self)
+        self.configure(self.uiView, at: .initialization)
     }
 
     public init(_ state: Binding<StateType>, _ view: UIViewType = .init(frame: .zero)) {
@@ -35,6 +36,7 @@ public struct SUIBridgeRoot<Root>: SUIBridgeRootObject where Root : Identifiable
         self.id = id
         self.state = state
         self.state.wrappedValue.set(root: self)
+        self.configure(self.uiView, at: .initialization)
     }
 
 }

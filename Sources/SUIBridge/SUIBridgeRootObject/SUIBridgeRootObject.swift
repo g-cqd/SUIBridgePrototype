@@ -8,7 +8,7 @@
 import SwiftUI
 
 public protocol SUIBridgeRootObject: UIViewRepresentable, Identifiable
-    where Root : IdentifiableUIView,
+    where Root : UIView,
           UIViewType == Root,
           Coordinator == SUICoordinator<UIViewType>,
           ID == Root.ID
