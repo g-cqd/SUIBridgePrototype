@@ -1,13 +1,13 @@
 //
-//  SUIBridge.swift
-//  SUIBridge
+//  SUIBridgePrototype.swift
+//  SUIBridgePrototype
 //
 //  Created by Guillaume Coquard on 20/03/24.
 //
 
 import SwiftUI
 
-public struct SUIBridge<Root>: View where Root : UIView {
+public struct SUIBridgePrototype<Root>: View where Root : UIView {
 
     public typealias BridgedRoot = SUIBridgeRoot<Root>
     public typealias RootConfiguration = SUIConfiguration<Root>
@@ -24,7 +24,7 @@ public struct SUIBridge<Root>: View where Root : UIView {
     }
 }
 
-extension SUIBridge {
+extension SUIBridgePrototype {
 
     
     public func set<A:Hashable>(
