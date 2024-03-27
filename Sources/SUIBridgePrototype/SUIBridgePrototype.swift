@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct SUIBridgePrototype<Root>: View where Root : UIView {
 
-    public typealias BridgedRoot = SUIBridgeRoot<Root>
+    public typealias BridgedRoot = SUIBridgePrototypeRoot<Root>
     public typealias RootConfiguration = SUIConfiguration<Root>
     public typealias StateType = SUIState<Root>
 

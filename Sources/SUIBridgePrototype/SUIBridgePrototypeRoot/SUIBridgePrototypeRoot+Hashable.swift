@@ -1,6 +1,6 @@
 //
 //  +Hashable.swift
-//  SUIBridge
+//  SUIBridgePrototype
 //
 //  Created by Guillaume Coquard on 19/03/24.
 //
@@ -8,8 +8,8 @@
 import Foundation
 
 // MARK: - Hashable
-extension SUIBridgeRoot: Hashable {
-    static public func == (lhs: SUIBridgeRoot, rhs: SUIBridgeRoot) -> Bool {
+extension SUIBridgePrototypeRoot: Hashable {
+    static public func == (lhs: SUIBridgePrototypeRoot, rhs: SUIBridgePrototypeRoot) -> Bool {
         lhs.uiView == rhs.uiView
     }
     public func hash(into hasher: inout Hasher) {

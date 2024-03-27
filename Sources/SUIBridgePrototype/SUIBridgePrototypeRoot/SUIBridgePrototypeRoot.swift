@@ -1,13 +1,13 @@
 //
-//  SUIBridgeRoot.swift
-//  SUIBridge
+//  SUIBridgePrototypeRoot.swift
+//  SUIBridgePrototype
 //
 //  Created by Guillaume Coquard on 19/03/24.
 //
 
 import SwiftUI
 
-public struct SUIBridgeRoot<Root>: SUIBridgeRootObject where Root : UIView {
+public struct SUIBridgePrototypeRoot<Root>: SUIBridgePrototypeRootObject where Root : UIView {
 
     public typealias UIViewType = Root
     public typealias StateType = SUIState<UIViewType>

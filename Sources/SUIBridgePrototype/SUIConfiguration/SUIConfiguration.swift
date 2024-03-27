@@ -9,7 +9,7 @@ import UIKit
 
 open class SUIConfiguration<Root> where Root : UIView {
 
-    typealias BridgedRoot = SUIBridgeRoot<Root>
+    typealias BridgedRoot = SUIBridgePrototypeRoot<Root>
     typealias Key = AnyHashable
     typealias Value = BridgedRoot.Configuration
     typealias Moment = SUICycleMoment

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SUICoordinatorObject+Static.swift
 //  
 //
 //  Created by Guillaume Coquard on 22/03/24.

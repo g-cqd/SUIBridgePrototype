@@ -1,6 +1,6 @@
 //
 //  SUIState.swift
-//  SUIWebView
+//  SUIBridgePrototype
 //
 //  Created by Guillaume Coquard on 19/03/24.
 //
@@ -11,7 +11,7 @@ import UIKit
 open class SUIState<Root>: SUIStateObject where Root : UIView {
 
     public typealias ID = Root.ID
-    public typealias BridgedRoot = SUIBridgeRoot<Root>
+    public typealias BridgedRoot = SUIBridgePrototypeRoot<Root>
     public typealias RootConfiguration = SUIConfiguration<Root>
 
     @ObservationIgnored

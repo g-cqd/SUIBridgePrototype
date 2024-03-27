@@ -11,7 +11,7 @@ import SwiftUI
 @Observable
 open class SUICoordinator<Root>: NSObject, Identifiable, SUICoordinatorObject where Root : UIView {
 
-    public typealias BridgedRoot = SUIBridgeRoot<Root>
+    public typealias BridgedRoot = SUIBridgePrototypeRoot<Root>
     public typealias ID = BridgedRoot.ID
 
     public private(set) var id: ID!

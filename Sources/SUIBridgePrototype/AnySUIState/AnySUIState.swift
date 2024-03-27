@@ -10,7 +10,7 @@ import UIKit
 public final class AnySUIState: NSObject, Identifiable, SUIStateObject {
 
     public typealias Root = UIView
-    public typealias BridgedRoot = SUIBridgeRoot<Root>
+    public typealias BridgedRoot = SUIBridgePrototypeRoot<Root>
 
     static fileprivate private(set) var states: [ID: any SUIStateObject] = [:]
 

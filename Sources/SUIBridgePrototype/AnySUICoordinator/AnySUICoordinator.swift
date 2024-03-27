@@ -10,7 +10,7 @@ import UIKit
 public final class AnySUICoordinator: NSObject, SUICoordinatorObject {
 
     public typealias Root = UIView
-    public typealias BridgedRoot = SUIBridgeRoot<Root>
+    public typealias BridgedRoot = SUIBridgePrototypeRoot<Root>
 
     public private(set) var id: ID!
 
